@@ -56,7 +56,7 @@ LinkedList.prototype.setItem = function (index, item) {
   node.item = node;
 }
 
-LinkedList.proptype.reverse = function (node) {
+LinkedList.prototype.reverse = function (node) {
   if (node == null) {
     return;
   }
