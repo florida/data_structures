@@ -71,3 +71,4 @@ LinkedList.prototype.reverse = function (node) {
   node.next = null;
 }
 
+module.exports = LinkedList;
