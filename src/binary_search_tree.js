@@ -1,7 +1,7 @@
 var Node = function (data, left, right) {
-  this.data;
-  this.left;
-  this.right;
+  this.data = data;
+  this.left = left;
+  this.right = right;
 }
 
 var BinarySearchTree = function () {
@@ -12,15 +12,17 @@ BinarySearchTree.prototype = {
   constructor: BinarySearchTree,
 
   insert: function (root, data) {
-    if (this.root)
-      this.root = newNode;
-
-    if (root === null) {
+    if (root == null) {
       root = new Node(data);
+
+    if (this.root === null)
+      this.root = root;
       return root;
+    } else if (data <= root.data){
+      root.left = this.insert(root.left, data);
     } else {
-      root.left = this.insert((data <= root.data) ? root.left : root.right, data);
-   }
+      root.right = this.insert(root.right, data);
+    }
   },
 
   remove: function (value) {
