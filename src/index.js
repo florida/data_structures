@@ -1,4 +1,6 @@
 module.exports = {
-  Node: require('./node'),
-  LinkedList: require('./linked_list')
+  BinarySearchTree: require('./binary_search_tree'),
+  BinaryHeap: require('./heap'),
+  LinkedList: require('./linked_list'),
+  Node: require('./node')
 };
