@@ -15,14 +15,14 @@ BinarySearchTree.prototype = {
     if (root == null) {
       root = new Node(data);
 
-    if (this.root === null)
-      this.root = root;
-      return root;
+      if (this.root === null)
+        this.root = root;
     } else if (data <= root.data){
       root.left = this.insert(root.left, data);
     } else {
       root.right = this.insert(root.right, data);
     }
+    return root;
   },
 
   remove: function (value) {
