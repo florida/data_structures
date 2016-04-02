@@ -25,6 +25,22 @@ BinarySearchTree.prototype = {
     return root;
   },
 
+  search: function (data) {
+    var recurseSearch = function (root) {
+      if (this.root == null || root == null) {
+        return false;
+      } else if (root.data === data) {
+        return true;
+      } else if (data <= root.data) {
+        recurseSearch(root.left);
+      } else {
+        recurseSearch(root.right);
+      }
+    }.bind(this);
+
+    recurseSearch(this.root, data);
+  }
+
   remove: function (value) {
 
   }
