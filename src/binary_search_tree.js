@@ -30,7 +30,7 @@ BinarySearchTree.prototype = {
       if (this.root == null || root == null) {
         return false;
       } else if (root.data === data) {
-        return true;
+        return root;
       } else if (data <= root.data) {
         recurseSearch(root.left);
       } else {
@@ -40,6 +40,30 @@ BinarySearchTree.prototype = {
 
     recurseSearch(this.root, data);
   }
+
+  findMin: function () {
+    var minRecurse = function (root) {
+      if (root == null) {
+        throw 'Error: Tree is empty';
+      } else if (root.left == null) {
+        return root.data;
+      }
+      return minRecurse(root.left);
+    }
+
+    this.minRecurse(this.root)
+  },
+
+  findMax: function () {
+    var maxRecurse = function (root) {
+      if (root == null) {
+        throw 'Error: Tree is empty';
+      } else if (root.left == null) {
+        return root.data;
+      }
+      return minRecurse(root.right);
+    }
+  },
 
   remove: function (value) {
 
