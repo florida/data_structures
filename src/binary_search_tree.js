@@ -41,7 +41,7 @@ BinarySearchTree.prototype = {
     recurseSearch(this.root, data);
   }
 
-  findMin: function () {
+  findMin: function (root = this.root) {
     var minRecurse = function (root) {
       if (root == null) {
         throw 'Error: Tree is empty';
@@ -51,10 +51,10 @@ BinarySearchTree.prototype = {
       return minRecurse(root.left);
     }
 
-    this.minRecurse(this.root)
+    return this.minRecurse(root);
   },
 
-  findMax: function () {
+  findMax: function (root = this.root) {
     var maxRecurse = function (root) {
       if (root == null) {
         throw 'Error: Tree is empty';
@@ -63,11 +63,24 @@ BinarySearchTree.prototype = {
       }
       return minRecurse(root.right);
     }
+
+    return this.maxRecurse(root);
+  },
+
+  height: function () { /*max depth, returning # of edges*/
+    var heightRecurse = function (root) {
+      if (root == null) {
+        return -1;
+      }
+
+      return Math.max(heightRecurse(root.left) + heightRecurse(root.right)) + 1
+    }
   },
 
   remove: function (value) {
 
   }
+
 }
 
 module.exports = BinarySearchTree;
