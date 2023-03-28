@@ -65,6 +65,14 @@ class SinglyLinkedList<T> {
     throw new SinglyLinkedListError('LinkedList is Empty');
   }
 
+  updateAtIndex(value: T, index: number) {
+    let node = this.getByIndex(index);
+
+    if (node) {
+      node.value = value;
+    }
+  }
+
   deleteHead() {
     if (!this.head) {
       throw new SinglyLinkedListError('LinkedList is Empty');
@@ -92,10 +100,6 @@ class SinglyLinkedList<T> {
     if (currentNode.next) {
       currentNode.next = null;
     }
-  }
-
-  deleteAll() {
-
   }
 
   deleteNode(targetNode: ListNode<T>) {
