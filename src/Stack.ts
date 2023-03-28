@@ -10,6 +10,9 @@ export class Stack<T> {
   }
 
   pop() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
     return this.items.pop()
   }
 
@@ -22,6 +25,9 @@ export class Stack<T> {
   }
 
   peek() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
     return this.items[this.items.length - 1];
   }
 

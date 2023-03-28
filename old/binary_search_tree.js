@@ -17,7 +17,7 @@ BinarySearchTree.prototype = {
 
       if (this.root === null)
         this.root = root;
-    } else if (data <= root.data){
+    } else if (data <= root.data) {
       root.left = this.insert(root.left, data);
     } else {
       root.right = this.insert(root.right, data);
@@ -39,7 +39,7 @@ BinarySearchTree.prototype = {
     }.bind(this);
 
     recurseSearch(this.root, data);
-  }
+  },
 
   findMin: function (root = this.root) {
     var minRecurse = function (root) {
