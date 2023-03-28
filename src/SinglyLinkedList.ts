@@ -39,6 +39,87 @@ class SinglyLinkedList<T> {
     currentNode.next = new ListNode(value);
   }
 
+  find() {
+
+  }
+
+  getByIndex(index: number): ListNode<T> {
+    if (index < 0) {
+      throw new SinglyLinkedListError('Invalid index');
+    }
+
+    if (!this.head) {
+      throw new SinglyLinkedListError('LinkedList is Empty');
+    }
+
+    let currentNode = this.head;
+    let currentIndex = 0;
+    while (currentNode) {
+      if (currentIndex === index) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+      currentIndex++;
+    }
+
+    throw new SinglyLinkedListError('LinkedList is Empty');
+  }
+
+  deleteHead() {
+    if (!this.head) {
+      throw new SinglyLinkedListError('LinkedList is Empty');
+    }
+
+    this.head = this.head.next;
+  }
+
+  deleteTail() {
+    if (!this.head) {
+      throw new SinglyLinkedListError('LinkedList is Empty');
+    }
+
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let currentNode = this.head;
+
+    while (currentNode.next && currentNode.next.next) {
+      currentNode = currentNode.next;
+    }
+
+    if (currentNode.next) {
+      currentNode.next = null;
+    }
+  }
+
+  deleteAll() {
+
+  }
+
+  deleteNode(targetNode: ListNode<T>) {
+    if (!this.head || !targetNode) {
+      throw new SinglyLinkedListError('Invalid Node');
+    }
+
+    if (this.head === targetNode) {
+      this.head = this.head.next;
+      return true;
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.next === targetNode) {
+        currentNode.next = currentNode.next.next
+        return true;
+      }
+      currentNode = currentNode.next
+    }
+
+    return false;
+  }
+
   deleteAtIndex(index: number) {
     if (!this.head || index < 0) {
       throw new SinglyLinkedListError('Invalid index');
@@ -61,15 +142,7 @@ class SinglyLinkedList<T> {
       currentIndex++;
     }
 
-    throw new SinglyLinkedListError('Out of Bounds');
-  }
-
-  deleteHead() {
-
-  }
-
-  deleteTail() {
-
+    throw new SinglyLinkedListError('Index out of bounds');
   }
 
   isEmpty() {
@@ -91,4 +164,13 @@ class SinglyLinkedList<T> {
   clear() {
     this.head = null;
   }
+}
+
+function insertAfterNode<T>(newNode: ListNode<T>, targetNode: ListNode<T>) {
+  if (!newNode || !targetNode) {
+    throw new SinglyLinkedListError('Invalid node(s)');
+  }
+
+  newNode.next = targetNode.next;
+  targetNode.next = newNode;
 }
